@@ -120,10 +120,10 @@ const MapComponent = () => {
   }, [bores]);
 
   return (
-    <div className="relative h-[400px] p-5">
+    <div className="relative h-[400px]">
       <div
         id="karachiMap"
-        className="h-[400px]"
+        className="h-[400px] rounded-sm"
       ></div>
     </div>
   );

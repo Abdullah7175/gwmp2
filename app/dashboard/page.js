@@ -18,7 +18,7 @@ const Dashboard = () => {
     <div className="flex flex-col md:flex-row gap-4 p-4">
       <div className="flex-1 space-y-4">
         {/* Main cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <LicenseeCard />
           <Card2 />
           <Card3 />
@@ -26,27 +26,27 @@ const Dashboard = () => {
 
         {/* Secondary cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <Scard1 />
             <Scard2 />
             <Scard3 />
             <Scard4 />
             <Scard5 />
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 grid grid-cols-2 mb-5">
             <Card4 />
             <Card5 />
           </div>
         </div>
 
         {/* Map */}
-        <div className="mt-4">
+        <div className="container w-full pt-3">
           <Map />
         </div>
       </div>
 
       {/* Sidebar */}
-      <div className="w-full md:w-1/4 mt-4 md:mt-0">
+      <div className="w-full md:w-1/3 mt-4 md:mt-0">
         <Rightbar />
       </div>
     </div>

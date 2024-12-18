@@ -40,7 +40,7 @@ const Footer = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <footer
       ref={ref}
-      className={cn("bg-gray-800 text-white text-center p-4 absolute bottom-0 w-[86%]", className)}
+      className={cn("bg-gray-800 text-white text-center p-4", className)}
       {...props}
     >
       <TooltipProvider delayDuration={0}>
