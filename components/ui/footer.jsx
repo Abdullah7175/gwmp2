@@ -61,3 +61,16 @@ const Footer = React.forwardRef(({ className, ...props }, ref) => {
 Footer.displayName = "Footer";
 
 export default Footer;
+
+// Updated AppLayout to ensure the footer is positioned at the bottom of the page
+export const AppLayout = ({ children }) => {
+  return (
+    <div className="min-h-screen flex flex-col">
+      {/* Main content */}
+      <main className="flex-grow">{children}</main>
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+};

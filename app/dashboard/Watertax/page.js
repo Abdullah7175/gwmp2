@@ -21,6 +21,7 @@ const WaterTax = () => {
   };
 
   return (
+    <div className="h-[67.4%] md:h-[68.3%]">
     <div className="max-w-md mx-auto bg-gray-100 p-6 border border-gray-300 rounded-lg mt-10">
       <h2 className="text-xl font-semibold text-center mb-4">Update Water Tax Rate</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -42,6 +43,7 @@ const WaterTax = () => {
           Update Rate
         </button>
       </form>
+    </div>
     </div>
   );
 };

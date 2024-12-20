@@ -6,7 +6,7 @@ const LicenseeCard = async () => {
   const licenseeData = await fetchCustomer();
 
   return (
-    <Card className="bg-[#f5f7fa] p-6 max-w-[450px] hover:bg-[#e4e9f2] transition-colors">
+    <Card className="bg-[#f5f7fa] p-6 rounded-xl flex items-center justify-between w-full max-w-[450px] shadow-lg hover:bg-[#e4e9f2] transition-colors">
       <CardHeader className="flex items-center gap-3">
         <MdCardMembership size={30} className="text-[#2b3d5b]" />
         <div>

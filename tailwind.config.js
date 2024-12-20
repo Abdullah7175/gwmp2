@@ -12,8 +12,6 @@ module.exports = {
 			'kwsc-green': '#2C6E49', // Custom green color
 			'kwsc-blue': '#006E8E',  // Custom blue color
 			'kwsc-light-blue': '#80C5E5', // Light blue for accents
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -64,7 +62,7 @@ module.exports = {
   			}
   		},
 		fontFamily: {
-			'sans': ['Helvetica', 'Arial', 'sans-serif'],
+			'sans': [ "Roboto", 'serif'],
 		  },
   		borderRadius: {
   			lg: 'var(--radius)',

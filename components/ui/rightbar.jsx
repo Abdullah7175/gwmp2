@@ -8,10 +8,10 @@ const Rightbar = () => {
         <div className="absolute right-0 bottom-0 sm:w-1/2 sm:h-1/2">
           <Image className="object-contain opacity-10" src="/kl.png" alt="" fill />
         </div>
-        <div className="flex flex-col gap-6 mt-3">
+        <div className="flex flex-col gap-6 mt-4">
           <span className="font-bold text-white text-2xl mt-6">Live Meter Readings</span>
           
-         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 z-10">
+         <div className="grid grid-cols-2 sm:grid-cols-3 mb-3 gap-3 z-10">
             <MeterCard />
             <MeterCard />
             <MeterCard />
@@ -35,6 +35,10 @@ const Rightbar = () => {
       
 
           
+            <MeterCard />
+            <MeterCard />
+            <MeterCard />
+
             <MeterCard />
             <MeterCard />
             <MeterCard />

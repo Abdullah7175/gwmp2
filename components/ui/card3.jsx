@@ -10,7 +10,7 @@ const Card3 = async () => {
   const proposedBoresCount = bores.filter(bore => bore.number_of_bores === "PROPOSED").length;
 
   return (
-    <div className="bg-[#f5f7fa] p-6 rounded-xl flex items-center justify-between w-full max-w-[450px] shadow-lg hover:bg-[#e4e9f2] transition-colors">
+    <div className="bg-[#f5f7fa] p-6 rounded-xl flex items-center justify-between max-w-[450px] md:max-w-[100%] shadow-lg hover:bg-[#e4e9f2] transition-colors md:col-span-2">
       <div className="flex items-center gap-3">
         <GiWell size={30} className="text-[#3f72af]" />
         <div className="flex flex-col">

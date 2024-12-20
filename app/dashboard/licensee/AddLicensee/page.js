@@ -10,18 +10,19 @@ import {
 
 //import { addGroundwaterExtraction } from "@/app/lib/data";
 
-const AddLicensee = ({ status,message }) => {
+const AddLicensee = ({ status, message }) => {
     const [formData, setFormData] = useState({
-        pbwd_row: [{number_of_bore_well: "", gps_location_pb: "", }],
-        pgwd_row: [{sizeofborep: "", volumestoragep: "", gps_location_pg: ""}],
-        agwd_row: [{sizeofboreap: "", volumestorageap: "", gps_location_ap: ""}],
-        dcb_row: [{number_of_bores: "", size_of_pipe: "", depth_volume_storage: "", discharge_per_month: "", gps_location_cb: ""}],
-        dm_row: [{number_of_pumps: "", ro_plant: "", pump_make: "", power_of_motor: "", discharge_gpm: "", gps_location_md: ""}],
-        dc_row: [{consumer_name: "", quantum_supplied: "", gps_location_cd: ""}],
-        dwss_row: [{source_of_water: "", existing_number_and_size: "", Volume_in_gallon: ""}],
-        iqgwb_row: [{consumer_name: "", quantum_supplied: "", gps_location_cd: ""}],
-        dpfm_row: [{made: "", type: "", size: "" }],
-        customer_documents: [{ id: 1, document_type: '', image_path: null }],  });
+        pbwd_row: [{ number_of_bore_well: "", gps_location_pb: "", }],
+        pgwd_row: [{ sizeofborep: "", volumestoragep: "", gps_location_pg: "" }],
+        agwd_row: [{ sizeofboreap: "", volumestorageap: "", gps_location_ap: "" }],
+        dcb_row: [{ number_of_bores: "", size_of_pipe: "", depth_volume_storage: "", discharge_per_month: "", gps_location_cb: "" }],
+        dm_row: [{ number_of_pumps: "", ro_plant: "", pump_make: "", power_of_motor: "", discharge_gpm: "", gps_location_md: "" }],
+        dc_row: [{ consumer_name: "", quantum_supplied: "", gps_location_cd: "" }],
+        dwss_row: [{ source_of_water: "", existing_number_and_size: "", Volume_in_gallon: "" }],
+        iqgwb_row: [{ consumer_name: "", quantum_supplied: "", gps_location_cd: "" }],
+        dpfm_row: [{ made: "", type: "", size: "" }],
+        customer_documents: [{ id: 1, document_type: '', image_path: null }],
+    });
 
     let identifier = "";
     const addRow = (identifier) => {
@@ -60,7 +61,7 @@ const AddLicensee = ({ status,message }) => {
             }
         });
     };
-    
+
     const handleRowChange = (e, index, field) => {
         const value = e.target.value;
         setFormData(prevState => {
@@ -147,17 +148,17 @@ const AddLicensee = ({ status,message }) => {
         const { name, value, files } = e.target;
         setFormData(prevState => {
             const updatedDocuments = [...prevState.customer_documents];
-    
+
             if (name === 'image_path' && files.length > 0) {
                 updatedDocuments[index].image_path = files[0]; // Store the File object directly
             } else if (name === 'document_type') {
                 updatedDocuments[index].document_type = value; // Update document type
             }
-    
+
             return { ...prevState, customer_documents: updatedDocuments };
         });
     };
-    
+
 
     const addDocument = () => {
         setFormData(prevState => ({
@@ -180,7 +181,7 @@ const AddLicensee = ({ status,message }) => {
         Object.keys(formData).forEach(key => { // Changed from formDataToSend to formData
             if (key !== 'customer_documents' && Array.isArray(formData[key])) {
                 formDataToSend.append(key, JSON.stringify(formData[key]));
-            } else if(key !== 'customer_documents') {
+            } else if (key !== 'customer_documents') {
                 formDataToSend.append(key, formData[key]);
             }
         });
@@ -194,9 +195,9 @@ const AddLicensee = ({ status,message }) => {
                 };
             });
 
-    
+
             const appendedEntries = customerDocumentsArray.map((doc, index) => {
-                
+
                 formDataToSend.append(`customer_documents[${index}].document_type`, doc.document_type);
                 if (doc.image_path) {
                     formDataToSend.append(`customer_documents[${index}].image_path`, doc.image_path);
@@ -206,14 +207,14 @@ const AddLicensee = ({ status,message }) => {
                     };
                 } else {
                     console.log(`No valid image for document type: ${doc.document_type}`);
-                    return null; 
+                    return null;
                 }
             });
-            
+
             const validEntries = appendedEntries.filter(entry => entry !== null);
         }
 
-    
+
 
         try {
             const response = await fetch('/api/addlicenseetest', {
@@ -235,21 +236,20 @@ const AddLicensee = ({ status,message }) => {
 
 
     return (
-        <form className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg" onSubmit={handleSubmit} encType="multipart/form-data">
+        <form className="max-w-5xl mx-auto p-6 border my-6 bg-white shadow-md rounded-lg" onSubmit={handleSubmit} encType="multipart/form-data">
             <Link href="/dashboard/licensee">
-        <button className={styles.backButton}>Back to Licensee</button>
-      </Link>
+                <button className={styles.backButton}>Back to Licensee</button>
+            </Link>
             <h1 className="text-2xl font-bold text-center mb-4">License Application Form</h1>
-            {/* License Type Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className={styles.leftSection}>
-                    <label htmlFor="catid" className="block text-sm font-medium mb-2">Type of License:</label>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                <div>
+                    <label htmlFor="catid" className="block text-gray-700 text-sm font-medium">Type of License:</label>
                     <select
                         id="catid"
                         name="catid"
                         value={formData.catid}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     >
                         <option value="">Select License Type</option>
@@ -259,252 +259,272 @@ const AddLicensee = ({ status,message }) => {
                         <option value='4'>Healthcare & Educational</option>
                         <option value='5'>Residential Complex</option>
                     </select>
+
                 </div>
 
-                <div className={styles.rightSection}>
-                    <label htmlFor="form_number" className="block text-sm font-medium mb-2">Form Number:</label>
+                <div>
+                    <label htmlFor="form_number" className="block text-gray-700 text-sm font-medium">Form Number:</label>
                     <input
                         type="number"
                         id="form_number"
                         name="form_number"
                         value={formData.form_number}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
-                </div>
-            </div>
 
-            {/* Personal Details Section */}
-            <div className={styles.row}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="person_name" className="block text-sm font-medium mb-2">Person Name:</label>
+                </div>
+
+            </div>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                <div>
+                    <label htmlFor="person_name" className="block text-gray-700 text-sm font-medium">Person Name:</label>
                     <input
                         type="text"
                         id="person_name"
                         name="person_name"
                         value={formData.person_name}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="father_name" className="block text-sm font-medium mb-2">Father Name:</label>
+                <div>
+                    <label htmlFor="father_name" className="block text-gray-700 text-sm font-medium">Father Name:</label>
                     <input
                         type="text"
                         id="father_name"
                         name="father_name"
                         value={formData.father_name}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
-                </div>
-            </div>
 
-            <div className={styles.row}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="company_name" className="block text-sm font-medium mb-2">Company Name:</label>
+                </div>
+
+            </div>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                <div>
+                    <label htmlFor="company_name" className="block text-gray-700 text-sm font-medium">Company Name:</label>
                     <input
                         type="text"
                         id="company_name"
                         name="company_name"
                         value={formData.company_name}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="current_address" className="block text-sm font-medium mb-2">Current Address:</label>
+                <div>
+                    <label htmlFor="current_address" className="block text-sm font-medium">Current Address:</label>
                     <input
                         type="text"
                         id="current_address"
                         name="current_address"
                         value={formData.current_address}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
-                </div>
-            </div>
 
-            <div className={styles.row}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="permanent_address" className="block text-sm font-medium mb-2">Permanent Address:</label>
+                </div>
+
+            </div>
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+                <div>
+                    <label htmlFor="permanent_address" className="block text-gray-700 text-sm font-medium">Permanent Address:</label>
                     <input
                         type="text"
                         id="permanent_address"
                         name="permanent_address"
                         value={formData.permanent_address}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="cnic" className="block text-sm font-medium mb-2">CNIC Number:</label>
+                <div>
+                    <label htmlFor="cnic" className="block text-sm font-medium">CNIC Number:</label>
                     <input
                         type="text"
                         id="cnic"
                         name="cnic"
                         value={formData.cnic}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="cnic_expiry" className="block text-sm font-medium mb-2">CNIC Expiry:</label>
+                <div>
+                    <label htmlFor="cnic_expiry" className="block text-sm font-medium">CNIC Expiry:</label>
                     <input
                         type="date"
                         id="cnic_expiry"
                         name="cnic_expiry"
                         value={formData.cnic_expiry}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
-                </div>
-            </div>
 
-            {/* Additional Personal Details */}
-            <div className={styles.row}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">Contact Number:</label>
+                </div>
+
+            </div>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                <div>
+                    <label htmlFor="phone" className="block text-gray-700 text-sm font-medium">Contact Number:</label>
                     <input
                         type="text"
                         id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">Email:</label>
+                <div>
+                    <label htmlFor="email" className="block text-gray-700 text-sm font-medium">Email:</label>
                     <input
                         type="email"
                         id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
-                </div>
-            </div>
 
-            {/* Land Details Section */}
-            <div className={styles.row}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="status_of_land" className="block text-sm font-medium mb-2">Status of Land:</label>
+                </div>
+
+            </div>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                <div>
+                    <label htmlFor="status_of_land" className="block text-gray-700 text-sm font-medium">Status of Land:</label>
                     <select
                         id="status_of_land"
                         name="status_of_land"
                         value={formData.status_of_land}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     >
                         <option value="">Select Status..</option>
                         <option value="1">Owned</option>
                         <option value="2">Rental</option>
                     </select>
+
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="size_of_plot" className="block text-sm font-medium mb-2">Size of Plot:</label>
+                <div>
+                    <label htmlFor="size_of_plot" className="block text-gray-700 text-sm font-medium">Size of Plot:</label>
                     <input
                         type="text"
                         id="size_of_plot"
                         name="size_of_plot"
                         value={formData.size_of_plot}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
-                </div>
-            </div>
 
-            <div className={styles.row}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="land_owning_agency" className="block text-sm font-medium mb-2">Land Owning Agency:</label>
+                </div>
+
+            </div>
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+                <div>
+                    <label htmlFor="land_owning_agency" className="block text-gray-700 text-sm font-medium">Land Owning Agency:</label>
                     <input
                         type="text"
                         id="land_owning_agency"
                         name="land_owning_agency"
                         value={formData.land_owning_agency}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="ntn_number" className="block text-sm font-medium mb-2">NTN Number:</label>
+                <div>
+                    <label htmlFor="ntn_number" className="block text-gray-700 text-sm font-medium">NTN Number:</label>
                     <input
                         type="text"
                         id="ntn_number"
                         name="ntn_number"
                         value={formData.ntn_number}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="srb_number" className="block text-sm font-medium mb-2">SRB Number:</label>
+                <div>
+                    <label htmlFor="srb_number" className="block text-gray-700 text-sm font-medium">SRB Number:</label>
                     <input
                         type="text"
                         id="srb_number"
                         name="srb_number"
                         value={formData.srb_number}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
+
             </div>
-            <div className={styles.row}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="issue_date" className="block text-sm font-medium mb-2">License Issue Date:</label>
+
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+                <div>
+                    <label htmlFor="issue_date" className="block text-gray-700 text-sm font-medium">License Issue Date:</label>
                     <input
                         type="date"
                         id="issue_date"
                         name="issue_date"
                         value={formData.issue_date}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
+
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="gallon_req" className="block text-sm font-medium mb-2">Demand In million Gallon Per Month</label>
+
+                <div>
+                    <label htmlFor="gallon_req" className="block text-gray-700 text-sm font-medium">Demand In million Gallon Per Month</label>
                     <input type="number"
                         id="gallon_req"
                         name="gallon_req"
                         value={formData.gallon_req}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                        required />
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        required
+                    />
+
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <label htmlFor="zid" className="block text-sm font-medium mb-2">Select Zone:</label>
+
+                <div>
+                    <label htmlFor="zid" className="block text-gray-700 text-sm font-medium">Select Zone:</label>
                     <select
                         id="zid"
                         name="zid"
                         value={formData.zid}
                         onChange={handleChange}
-                        className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         required
                     >
                         <option value="">Select Zone</option>
@@ -516,40 +536,47 @@ const AddLicensee = ({ status,message }) => {
                         <option value='6'>Dukati</option>
                         <option value='7'>North</option>
                     </select>
+
                 </div>
 
             </div>
-            <div className={styles.row}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <label htmlFor="fees" className="block text-sm font-medium mb-2">License Fees:</label>
-                <select
-                    id="fees"
-                    name="fees"
-                    value={formData.fees}
-                    onChange={handleChange}
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                    required
-                >
-                    <option value="">Select Fees Status..</option>
-                    <option value="1">Paid</option>
-                    <option value="2">Unpaid</option>
-                </select>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <label htmlFor="active" className="block text-sm font-medium mb-2">Licensee Stauts:</label>
-                <select
-                    id="active"
-                    name="active"
-                    value={formData.active}
-                    onChange={handleChange}
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                    required
+            
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                <div>
+                    <label htmlFor="fees" className="block text-gray-700 text-sm font-medium">License Fees:</label>
+                    <select
+                        id="fees"
+                        name="fees"
+                        value={formData.fees}
+                        onChange={handleChange}
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        required
                     >
-                    <option value="">Select Status..</option>
-                    <option value="1">active</option>
-                    <option value="0">Not active</option>
-                </select>
-            </div></div>
+                        <option value="">Select Fees Status..</option>
+                        <option value="1">Paid</option>
+                        <option value="2">Unpaid</option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <label htmlFor="active" className="block text-gray-700 text-sm font-medium">Licensee Status:</label>
+                    <select
+                        id="active"
+                        name="active"
+                        value={formData.active}
+                        onChange={handleChange}
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        required
+                    >
+                        <option value="">Select Status..</option>
+                        <option value="1">Active</option>
+                        <option value="0">Not active</option>
+                    </select>
+
+                </div>
+
+            </div>
 
             {/* Previous License Details Section */}
             <div className={styles.presection}>

@@ -21,22 +21,20 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <LicenseeCard />
           <Card2 />
+          <Card5 />
           <Card3 />
+          <Card4 />
+          
         </div>
 
         {/* Secondary cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <Scard1 />
             <Scard2 />
             <Scard3 />
             <Scard4 />
             <Scard5 />
-          </div>
-          <div className="space-y-4 grid grid-cols-2 mb-5">
-            <Card4 />
-            <Card5 />
-          </div>
         </div>
 
         {/* Map */}

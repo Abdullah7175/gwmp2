@@ -37,7 +37,8 @@ const Billing = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-gray-100 p-6 border border-gray-300 rounded-lg mt-10">
+    <div className="md:h-[66.8%]">
+    <div className="max-w-md mx-auto bg-gray-100 p-6 border border-gray-300 rounded-lg mt-10 mb-3">
       <h2 className="text-xl font-semibold text-center mb-4">Generate Bill Here...</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <label className="block text-sm font-medium mb-2">Customer ID:</label>
@@ -77,6 +78,7 @@ const Billing = () => {
           Generate Bill
         </button>
       </form>
+    </div>
     </div>
   );
 };
