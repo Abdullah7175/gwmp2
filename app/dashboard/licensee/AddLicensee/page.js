@@ -875,7 +875,7 @@ const AddLicensee = ({ status, message }) => {
                       }
                     />
                     </div>
-                  </div>
+                    </div>
                   
                 </div>
               ))}
@@ -904,37 +904,42 @@ const AddLicensee = ({ status, message }) => {
         </h3>
 
         {formData.agwd_row.map((agwnd, index) => (
-          <div key={`${agwnd.id}-${index}`} className={styles.row}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Dia of Pipe</label>
-              <input
-                type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                name="sizeofboreap"
-                value={agwnd.sizeofboreap}
-                onChange={(e) => handleRowChange(e, index, "sizeofboreap")}
-              />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Volume Of Storage</label>
-              <input
-                type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                name="volumestorageap"
-                value={agwnd.volumestorageap}
-                onChange={(e) => handleRowChange(e, index, "volumestorageap")}
-              />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>GPS Location</label>
-              <input
-                type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                name="gps_location_ap"
-                value={agwnd.gps_location_ap}
-                onChange={(e) => handleRowChange(e, index, "gps_location_ap")}
-              />
-            </div>
+          <div key={`${agwnd.id}-${index}`}>
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+                    <div>
+                    <label className="block text-gray-700 text-sm font-medium">Dia of Pipe:</label>
+                    <input
+                      type="text"
+                      className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      name="sizeofboreap"
+                      value={agwnd.sizeofboreap}
+                      onChange={(e) => handleRowChange(e, index, "sizeofboreap")}
+                    />
+                    </div>
+
+                    <div>
+                    <label className="block text-gray-700 text-sm font-medium">Volume Of Storage:</label>
+                    <input
+                      type="text"
+                      className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      name="volumestorageap"
+                      value={agwnd.volumestorageap}
+                      onChange={(e) => handleRowChange(e, index, "volumestorageap")
+                      }
+                    />
+                    </div>
+                    <div>
+                    <label className="block text-gray-700 text-sm font-medium">GPS Location</label>
+                    <input
+                      type="text"
+                      className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      name="gps_location_ap"
+                      value={agwnd.gps_location_ap}
+                      onChange={(e) => handleRowChange(e, index, "gps_location_ap")}
+                    />
+                    </div>
+                  </div>
+            
           </div>
         ))}
 
@@ -954,57 +959,64 @@ const AddLicensee = ({ status, message }) => {
 
         <h3 className={styles.subHeading}>Details of Current Bores</h3>
         {formData.dcb_row.map((dcb, index) => (
-          <div key={`${dcb.id}-${index}`} className={styles.row}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Number of Bores</label>
+          <div key={`${dcb.id}-${index}`} >
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+                <div>
+              <label className="block text-gray-700 text-sm font-medium">Number of Bores:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dcb.number_of_bores}
                 onChange={(e) => handleRowChange(e, index, "number_of_bores")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Size of Pipe</label>
+            
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">Size of Pipe:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dcb.size_of_pipe}
                 onChange={(e) => handleRowChange(e, index, "size_of_pipe")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Depth/Volume of Storage</label>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">Depth/Volume of Storage:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dcb.depth_volume_storage}
                 onChange={(e) =>
                   handleRowChange(e, index, "depth_volume_storage")
                 }
               />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>
-                Discharge of Bore per Month
+              </div>
+            <div>
+            
+              <label className="block text-gray-700 text-sm font-medium">
+                Discharge of Bore per Month:
               </label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dcb.discharge_per_month}
                 onChange={(e) =>
                   handleRowChange(e, index, "discharge_per_month")
                 }
               />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>GPS Location</label>
+              </div>
+            
+          <div>
+              <label className="block text-gray-700 text-sm font-medium">GPS Location:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dcb.gps_location_cb}
                 onChange={(e) => handleRowChange(e, index, "gps_location_cb")}
               />
+            </div>
+            
+
             </div>
           </div>
         ))}
