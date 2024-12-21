@@ -1038,61 +1038,63 @@ const AddLicensee = ({ status, message }) => {
 
         <h3 className={styles.subHeading}>Details of Motor / Pump</h3>
         {formData.dm_row.map((dmp, index) => (
-          <div key={`${dmp.id}-${index}`} className={styles.row}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Number of Motor / Pumps</label>
+          <div key={`${dmp.id}-${index}`} >
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">Number of Motor / Pumps:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dmp.number_of_pumps}
                 onChange={(e) => handleRowChange(e, index, "number_of_pumps")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>R/O Plant</label>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">R/O Plant:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dmp.ro_plant}
                 onChange={(e) => handleRowChange(e, index, "ro_plant")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Pump Make / Type</label>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">Pump Make / Type:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dmp.pump_make}
                 onChange={(e) => handleRowChange(e, index, "pump_make")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Power of Motor in HP</label>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">Power of Motor in HP:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dmp.power_of_motor}
                 onChange={(e) => handleRowChange(e, index, "power_of_motor")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Discharge in GPM</label>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">Discharge in GPM:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dmp.discharge_gpm}
                 onChange={(e) => handleRowChange(e, index, "discharge_gpm")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>GPS Location</label>
+           <div>
+              <label className="block text-gray-700 text-sm font-medium">GPS Location</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dmp.gps_location_md}
                 onChange={(e) => handleRowChange(e, index, "gps_location_md")}
               />
             </div>
+          </div>
           </div>
         ))}
         <button
@@ -1114,34 +1116,36 @@ const AddLicensee = ({ status, message }) => {
 
         <h3 className={styles.subHeading}>Details of Consumer</h3>
         {formData.dc_row.map((doc, index) => (
-          <div key={`${doc.id}-${index}`} className={styles.row}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Consumer Name</label>
+          <div key={`${doc.id}-${index}`} >
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">Consumer Name:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={doc.consumer_name}
                 onChange={(e) => handleRowChange(e, index, "consumer_name")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Quantum Supplied</label>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">Quantum Supplied:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={doc.quantum_supplied}
                 onChange={(e) => handleRowChange(e, index, "quantum_supplied")}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>GPS Location</label>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium">GPS Location:</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={doc.gps_location_cd}
                 onChange={(e) => handleRowChange(e, index, "gps_location_cd")}
               />
             </div>
+          </div>
           </div>
         ))}
         <button
@@ -1162,23 +1166,23 @@ const AddLicensee = ({ status, message }) => {
           Declaration of Water Supply Source
         </h3>
         {formData.dwss_row.map((dwss, index) => (
-          <div key={`${dwss.id}-${index}`} className={styles.row}>
+          <div key={`${dwss.id}-${index}`}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Source of Water</label>
+              <label className="block text-gray-700 text-sm font-medium">Source of Water</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dwss.source_of_water}
                 onChange={(e) => handleRowChange(e, index, "source_of_water")}
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>
+              <label className="block text-gray-700 text-sm font-medium">
                 Existing Number and Size of Water Connection
               </label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dwss.existing_number_and_size}
                 onChange={(e) =>
                   handleRowChange(e, index, "existing_number_and_size")
@@ -1186,12 +1190,12 @@ const AddLicensee = ({ status, message }) => {
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>
+              <label className="block text-gray-700 text-sm font-medium">
                 Volume in Gallon per Month
               </label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dwss.Volume_in_gallon}
                 onChange={(e) => handleRowChange(e, index, "Volume_in_gallon")}
               />
@@ -1218,19 +1222,19 @@ const AddLicensee = ({ status, message }) => {
         {formData.iqgwb_row.map((iqgwb, index) => (
           <div key={`${iqgwb.id}-${index}`} className={styles.row}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Bores / Tube Wells</label>
+              <label className="block text-gray-700 text-sm font-medium">Bores / Tube Wells</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={iqgwb.bore}
                 onChange={(e) => handleRowChange(e, index, "bore")}
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Dischare From Each Bores</label>
+              <label className="block text-gray-700 text-sm font-medium">Dischare From Each Bores</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={iqgwb.discharge_from_well}
                 onChange={(e) =>
                   handleRowChange(e, index, "discharge_from_well")
@@ -1238,10 +1242,10 @@ const AddLicensee = ({ status, message }) => {
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>TDS Value</label>
+              <label className="block text-gray-700 text-sm font-medium">TDS Value</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={iqgwb.tds_value_ppm}
                 onChange={(e) => handleRowChange(e, index, "tds_value_ppm")}
               />
@@ -1266,28 +1270,28 @@ const AddLicensee = ({ status, message }) => {
         {formData.dpfm_row.map((dpfm, index) => (
           <div key={`${dpfm.id}-${index}`} className={styles.row}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Made</label>
+              <label className="block text-gray-700 text-sm font-medium">Made</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dpfm.made}
                 onChange={(e) => handleRowChange(e, index, "made")}
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Type</label>
+              <label className="block text-gray-700 text-sm font-medium">Type</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dpfm.type}
                 onChange={(e) => handleRowChange(e, index, "type")}
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <label className={styles.label1}>Size</label>
+              <label className="block text-gray-700 text-sm font-medium">Size</label>
               <input
                 type="text"
-                className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={dpfm.size}
                 onChange={(e) => handleRowChange(e, index, "size")}
               />
@@ -1335,7 +1339,7 @@ const AddLicensee = ({ status, message }) => {
               name="document_type"
               value={docs.document_type}
               onChange={(e) => handleDocumentChange(index, e)}
-              className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="">Select Document Type</option>
               <option value="Application Form">Application Form</option>
@@ -1382,7 +1386,7 @@ const AddLicensee = ({ status, message }) => {
               accept="image/*"
               multiple
               onChange={(e) => handleDocumentChange(index, e)}
-              className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
         </div>
